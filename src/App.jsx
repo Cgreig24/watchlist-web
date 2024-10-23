@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+import Allfilms from "./pages/Allfilms";
+import moviesAPI from "./services/moviesAPI";
+import Discover from "./pages/ListMoviesByGenre";
+import axios from "axios";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import AllMovieGenres from "./pages/AllMovieGenres";
+import ListMoviesByGenre from "./pages/ListMoviesByGenre";
+import MovieDetails from "./pages/Moviedetails";
 
 function App() {
-  const [count, setCount] = useState(0)
+  /*
+  const { getMoviesGenre } = moviesAPI();
+  const [genre, setGenre] = useState([]);
+
+  const movie_id = 11;
+*/
+
+  /*
+  useEffect(() => {
+    getMoviesGenre().then((resp) => console.log(resp));
+  }, []);
+  */
+
+  /*
+  useEffect(() => {
+    getMoviesGenre().then((resp) => {
+      setGenre(resp.data.genres);
+    });
+  }, []);
+  */
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Allfilms />} />
+        <Route path="/genres" element={<AllMovieGenres />} />
+        <Route path="/genres/:genreID" element={<ListMoviesByGenre />} />
+        <Route path="/discover" element={<Discover />} />
+        <Route path="/movies/:movie_id" element={<MovieDetails />} />
+      </Routes>
+
+      {/* <Allfilms /> */}
+      {/* 
+        {genre &&
+          genre.map((g, i) => {
+            return (
+              <div key={i}>
+                <ul>
+                  <li>{g.name}</li>
+                </ul>
+              </div>
+            );
+          })}
+            */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
