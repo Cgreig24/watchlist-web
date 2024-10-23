@@ -8,11 +8,13 @@ export default function Navbar() {
   ];
   return (
     <>
-      {navLinks.map((link) => (
-        <NavLink key={link.id} to={link.to}>
-          {link.label}
-        </NavLink>
-      ))}
+      <nav className="bg-blue-800 flex justify-between items-center h-20 p-4">
+        {navLinks.map((link) => (
+          <NavLink key={link.id} to={link.to}>
+            {link.label}
+          </NavLink>
+        ))}
+      </nav>
     </>
   );
 }

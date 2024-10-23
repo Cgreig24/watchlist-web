@@ -9,11 +9,13 @@ import axios from "axios";
 function Search() {
   const [searchMovie, setSearchMovie] = useState([]);
 
+  const searchTitle = "Lord of the rings";
+
   const options = {
     method: "GET",
     url: "https://api.themoviedb.org/3/search/movie",
     params: {
-      query: "Lord%20of%20the%20rings",
+      query: `${searchTitle}`,
       include_adult: "false",
       language: "en-US",
       page: "1",
@@ -24,10 +26,32 @@ function Search() {
     },
   };
 
-  axios
-    .request(options)
-    .then((res) => console.log(res.data))
-    .catch((err) => console.error(err));
+  useEffect(() => {
+    const updateMovieSearch = async () => {
+      await axios
+        .request(options)
+        .then((res) => {
+          console.log(res.data.results);
+          setSearchMovie(res.data.results);
+        })
+        .catch((err) => console.error(err));
+    };
+    updateMovieSearch();
+  }, []);
+
+  return (
+    <>
+      <h1>Search Results</h1>
+
+      {searchMovie.map((mov) => {
+        return (
+          <div key={mov.id}>
+            <p>{mov.title}</p>
+          </div>
+        );
+      })}
+    </>
+  );
 }
 
 export default Search;

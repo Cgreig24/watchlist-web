@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 const apiKey = import.meta.env.VITE_MOVIES_API_KEY;
 const accountId = import.meta.env.accountId;
 
@@ -44,7 +46,13 @@ export default function Watchlist() {
         {watchlist.map((mov) => {
           return (
             <div key={mov.id}>
-              <p>{mov.title}</p>
+              <Link to={`/movies/` + mov.id}>
+                <img
+                  className="movieListIcons"
+                  src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`}
+                />
+                <p>{mov.title}</p>
+              </Link>
             </div>
           );
         })}

@@ -10,6 +10,7 @@ import AllMovieGenres from "./pages/AllMovieGenres";
 import ListMoviesByGenre from "./pages/ListMoviesByGenre";
 import MovieDetails from "./pages/Moviedetails";
 import Watchlist from "./pages/Watchlist";
+import Search from "./components/Search";
 
 function App() {
   /*
@@ -43,6 +44,7 @@ function App() {
         <Route path="/discover" element={<Discover />} />
         <Route path="/movies/:movie_id" element={<MovieDetails />} />
         <Route path="/watchlist" element={<Watchlist />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
 
       {/* <Allfilms /> */}
