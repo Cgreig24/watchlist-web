@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import moviesAPI from "../services/moviesAPI";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const apiKey = import.meta.env.VITE_MOVIES_API_KEY;
 
 //Use same logic as for Student cohort to pass id when clicking on name
@@ -11,6 +12,8 @@ export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
 
   const { movie_id } = useParams();
+
+  const navigate = useNavigate();
 
   /*
   useEffect(() => {
@@ -47,6 +50,9 @@ export default function MovieDetails() {
     listMovieDetails();
   }, []);
 
+  //let releaseDate = movieDetails.release_date;
+  //let releaseYear = releaseDate.slice(0, 3);
+
   return (
     <div>
       <img
@@ -58,7 +64,14 @@ export default function MovieDetails() {
       <p>{movieDetails.vote_average}</p>
       <p>{movieDetails.release_date}</p>
       <p>{movieDetails.overview}</p>
-      <button>Back</button>
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Back
+      </button>
+      <button>Add to Watchlist</button>
     </div>
   );
 }

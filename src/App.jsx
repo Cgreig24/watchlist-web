@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import AllMovieGenres from "./pages/AllMovieGenres";
 import ListMoviesByGenre from "./pages/ListMoviesByGenre";
 import MovieDetails from "./pages/Moviedetails";
+import Watchlist from "./pages/Watchlist";
 
 function App() {
   /*
@@ -41,6 +42,7 @@ function App() {
         <Route path="/genres/:genreID" element={<ListMoviesByGenre />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/movies/:movie_id" element={<MovieDetails />} />
+        <Route path="/watchlist" element={<Watchlist />} />
       </Routes>
 
       {/* <Allfilms /> */}

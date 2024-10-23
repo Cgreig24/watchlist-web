@@ -52,6 +52,11 @@ export default function ListMoviesByGenre() {
         return (
           <div key={mov.id}>
             <Link to={`/movies/` + mov.id}>
+              <img
+                className="movieListIcons"
+                src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`}
+              />
+
               <p>{mov.title}</p>
             </Link>
             <p>{mov.vote_average}</p>
