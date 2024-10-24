@@ -7,14 +7,15 @@ export default function Navbar() {
     { id: 3, to: "/watchlist", label: "Watchlist" },
   ];
   return (
-    <>
-      <nav className="bg-blue-800 flex justify-between items-center h-20 p-4">
+    <header className="navbar">
+      <h1>Watchlist Web</h1>
+      <nav>
         {navLinks.map((link) => (
-          <NavLink key={link.id} to={link.to}>
+          <NavLink class="navlinks" key={link.id} to={link.to}>
             {link.label}
           </NavLink>
         ))}
       </nav>
-    </>
+    </header>
   );
 }

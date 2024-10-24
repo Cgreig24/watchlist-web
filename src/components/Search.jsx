@@ -12,16 +12,31 @@ function Search() {
 
   const [searchQuery, setSearchQuery] = useState("");
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
   //const searchTitle = "Lord of the rings";
+
+  const previousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((next) => next + 1);
+    }
+  };
 
   const options = {
     method: "GET",
     url: "https://api.themoviedb.org/3/search/movie",
     params: {
       query: `${searchQuery}`,
-      include_adult: "false",
+      include_adult: "true",
       language: "en-US",
-      page: "1",
+      page: `${currentPage}`,
     },
     headers: {
       accept: "application/json",
@@ -36,40 +51,64 @@ function Search() {
         .then((res) => {
           console.log(res.data.results);
           setSearchMovie(res.data.results);
+          setTotalPages(res.data.total_pages);
+          console.log(totalPages);
         })
         .catch((err) => console.error(err));
     };
     updateMovieSearch();
-  }, [searchQuery]);
+  }, [searchQuery, currentPage]);
 
   return (
     <>
-      <h1>Search Results</h1>
-      <div className="searchbar">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-            console.log(e.target.value);
-          }}
-        />
-        <button onClick={() => setSearchQuery("")}>Clear Search</button>
+      <div className="searchResultsMovieContainer">
+        <h1>Search Results</h1>
+        <div className="searchbar">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              console.log(e.target.value);
+            }}
+          />
+          <button onClick={() => setSearchQuery("")}>Clear Search</button>
+        </div>
+        <div className="searchResultsMovieCard">
+          {searchMovie.length < 1 && searchQuery.length > 0 ? (
+            <p>No results found</p>
+          ) : (
+            searchMovie.map((mov) => (
+              <Link to={`/movies/` + mov.id}>
+                <div className="searchResultsMovie" key={mov.id}>
+                  <img
+                    className="searchResultsImage"
+                    src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`}
+                  />
+                  <div className="searchResultsMovieInfo">
+                    <h3>{mov.title}</h3>
+                    <p>{mov.release_date}</p>
+                  </div>
+                </div>
+              </Link>
+            ))
+          )}
+        </div>
       </div>
+      <div className="pageButtons">
+        {currentPage > 1 && (
+          <button className="prevpageButton" onClick={previousPage}>
+            Previous
+          </button>
+        )}
+        <p>Page {currentPage}</p>
 
-      {searchMovie.map((mov) => {
-        return (
-          <Link to={`/movies/` + mov.id}>
-            <div key={mov.id}>
-              <img
-                className="searchResultsImage"
-                src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`}
-              />
-              <p>{mov.title}</p>
-            </div>
-          </Link>
-        );
-      })}
+        {currentPage < totalPages && (
+          <button className="nextPageButton" onClick={nextPage}>
+            Next
+          </button>
+        )}
+      </div>
     </>
   );
 }
