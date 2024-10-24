@@ -66,6 +66,43 @@ button:focus-visible {
   width: 100px;
 }
 
+.searchbar {
+  input,
+  button {
+    margin: auto;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 88%;
+    transform: translate(-50%, -50%);
+  }
+
+  > input {
+    height: 25px;
+    width: 25%;
+    box-shadow: 1px 1px 6px -2px grey;
+    padding: 10px;
+    left: 50%;
+    font-size: 22px;
+    &::placeholder {
+      font-size: 16px;
+    }
+  }
+
+  > button {
+    height: 46px;
+    padding: 0 25px;
+    left: 60%;
+    font-size: 15px;
+    background: linear-gradient(90deg, rgba(15, 255, 184, 1) 33%);
+  }
+}
+
+.searchResultsImage {
+  width: 80px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

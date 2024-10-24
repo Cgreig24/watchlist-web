@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Allfilms from "./pages/Allfilms";
+import Homepage from "./pages/Homepage";
 import moviesAPI from "./services/moviesAPI";
 import Discover from "./pages/ListMoviesByGenre";
 import axios from "axios";
@@ -38,7 +38,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Allfilms />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/genres" element={<AllMovieGenres />} />
         <Route path="/genres/:genreID" element={<ListMoviesByGenre />} />
         <Route path="/discover" element={<Discover />} />
