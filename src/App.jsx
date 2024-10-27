@@ -11,6 +11,9 @@ import ListMoviesByGenre from "./pages/ListMoviesByGenre";
 import MovieDetails from "./pages/Moviedetails";
 import Watchlist from "./pages/Watchlist";
 import Search from "./components/Search";
+import { Carousel } from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Footer from "./components/Footer";
 
 function App() {
   /*
@@ -37,16 +40,20 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/genres" element={<AllMovieGenres />} />
-        <Route path="/genres/:genreID" element={<ListMoviesByGenre />} />
-        <Route path="/discover" element={<Discover />} />
-        <Route path="/movies/:movie_id" element={<MovieDetails />} />
-        <Route path="/watchlist" element={<Watchlist />} />
-        <Route path="/search" element={<Search />} />
-      </Routes>
-
+      <div className="appContainer">
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/genres" element={<AllMovieGenres />} />
+            <Route path="/genres/:genreID" element={<ListMoviesByGenre />} />
+            <Route path="/discover" element={<Discover />} />
+            <Route path="/movies/:movie_id" element={<MovieDetails />} />
+            <Route path="/watchlist" element={<Watchlist />} />
+            <Route path="/search" element={<Search />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
       {/* <Allfilms /> */}
       {/* 
         {genre &&

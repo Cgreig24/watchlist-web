@@ -67,7 +67,8 @@ export default function ListMoviesByGenre() {
                   src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`}
                 />
                 <div className="searchResultsMovieInfo">
-                  <p>{mov.title}</p>
+                  <h4>{mov.title}</h4>
+                  <p>{mov.release_date}</p>
                   <p>{mov.vote_average}</p>
                 </div>
               </Link>

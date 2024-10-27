@@ -61,47 +61,53 @@ function Search() {
 
   return (
     <>
-      <div className="searchResultsMovieContainer">
-        <h1>Search Results</h1>
-        <div className="searchbar">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              console.log(e.target.value);
-            }}
-          />
-          <button onClick={() => setSearchQuery("")}>Clear Search</button>
-        </div>
-        <div className="searchResultsMovieCard">
-          {searchMovie.length < 1 && searchQuery.length > 0 ? (
-            <p>No results found</p>
-          ) : (
-            searchMovie.map((mov) => (
-              <Link to={`/movies/` + mov.id}>
-                <div className="searchResultsMovie" key={mov.id}>
-                  <img
-                    className="searchResultsImage"
-                    src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`}
-                  />
-                  <div className="searchResultsMovieInfo">
-                    <h3>{mov.title}</h3>
-                    <p>{mov.release_date}</p>
-                  </div>
-                </div>
-              </Link>
-            ))
-          )}
-        </div>
+      <div className="searchbar">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            console.log(e.target.value);
+          }}
+        />
+        <button onClick={() => setSearchQuery("")}>Clear Search</button>
       </div>
+
+      {searchQuery.length > 0 && (
+        <div className="searchResultsMovieContainer">
+          <h3>Search Results</h3>
+          <div className="searchResultsMovieCard">
+            {searchMovie.length < 1 && searchQuery.length > 0 ? (
+              <p>No results found</p>
+            ) : (
+              searchMovie.map((mov) => (
+                <Link to={`/movies/` + mov.id}>
+                  <div className="searchResultsMovie" key={mov.id}>
+                    <img
+                      className="searchResultsImage"
+                      src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`}
+                    />
+                    <div className="searchResultsMovieInfo">
+                      <h4>{mov.title}</h4>
+                      <p>{mov.release_date}</p>
+                      <p>{mov.vote_average}</p>
+                    </div>
+                  </div>
+                </Link>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+
       <div className="pageButtons">
         {currentPage > 1 && (
           <button className="prevpageButton" onClick={previousPage}>
             Previous
           </button>
         )}
-        <p>Page {currentPage}</p>
+
+        {searchMovie.length > 0 && <p>Page {currentPage}</p>}
 
         {currentPage < totalPages && (
           <button className="nextPageButton" onClick={nextPage}>

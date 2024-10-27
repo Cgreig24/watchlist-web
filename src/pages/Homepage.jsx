@@ -18,11 +18,11 @@ function Homepage() {
   return (
     <>
       <div>
-        <p> Hello welcome to the movie database</p>
-        <p>
+        <h1>Welcome to Watchlist Web!</h1>
+        <h2>
           Search for a film to get started or{" "}
           <Link to="/genres">browse by genre</Link>
-        </p>
+        </h2>
         <Search />
       </div>
     </>

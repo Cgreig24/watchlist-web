@@ -8,13 +8,15 @@ export default function Navbar() {
   ];
   return (
     <header className="navbar">
-      <h1>Watchlist Web</h1>
+      <h1 className="navbarTitle">Watchlist Web</h1>
       <nav>
-        {navLinks.map((link) => (
-          <NavLink class="navlinks" key={link.id} to={link.to}>
-            {link.label}
-          </NavLink>
-        ))}
+        <div classname="navlinksContainer">
+          {navLinks.map((link) => (
+            <NavLink class="navlinks" key={link.id} to={link.to}>
+              <p className="singleNavlink">{link.label}</p>
+            </NavLink>
+          ))}
+        </div>
       </nav>
     </header>
   );

@@ -85,37 +85,45 @@ export default function MovieDetails() {
   };
 
   return (
-    <div>
+    <div className="movieDetailsContainer">
       <img
         className="movieDetailsImage"
         src={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}
       />
-      <p>{movieDetails.title}</p>
-      <p>{movieDetails.tagline}</p>
-      <p>{movieDetails.vote_average}</p>
-      <p>{movieDetails.release_date}</p>
-      <p>{movieDetails.overview}</p>
+      <h3 className="movieDetailsTitle">{movieDetails.title}</h3>
+      <p className="movieDetailsTagline">{movieDetails.tagline}</p>
+      <p className="movieDetailsPopularity">{movieDetails.vote_average}</p>
+      <p className="movieDetailsReleaseDate">{movieDetails.release_date}</p>
+      <p className="movieDetailsOverview">{movieDetails.overview}</p>
+
+      <div classname="watchlistButtons">
+        <button
+          className="removeFromWatchlistButton"
+          onClick={() => {
+            removeFromWatchlist();
+            navigate(-1);
+          }}
+        >
+          Remove from Watchlist
+        </button>
+
+        <button
+          className="addToWatchlistButton"
+          onClick={() => {
+            addToWatchlist();
+          }}
+        >
+          Add to Watchlist
+        </button>
+      </div>
+
       <button
+        className="backButton"
         onClick={() => {
           navigate(-1);
         }}
       >
         Back
-      </button>
-      <button
-        onClick={() => {
-          addToWatchlist();
-        }}
-      >
-        Add to Watchlist
-      </button>
-      <button
-        onClick={() => {
-          removeFromWatchlist();
-          navigate(-1);
-        }}
-      >
-        Remove from Watchlist
       </button>
     </div>
   );
