@@ -168,6 +168,7 @@ button:focus-visible {
   box-shadow: 1px 1px 15px 5px grey;
   border-radius: 40px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 .searchResultsMovieCard {
@@ -230,10 +231,30 @@ button:focus-visible {
 }
 
 .genreImage {
-  width: 200px;
+  width: 300px;
+  margin: 1px;
+  border-radius: 20px;
 }
 
-.genreContainer {
+.genreMovieCard {
+  margin: 1px;
+  padding: 1px;
+}
+
+.genreNames {
+  margin-block-start: 1px;
+  margin-block-end: 50px;
+  color: #371965;
+  font-family: "Titan One", sans-serif;
+}
+
+.carousel-container {
+  margin-top: 80px;
+}
+
+.carousel-item-padding-40-px {
+  margin: 1px;
+  padding: 1px;
 }
 
 .movieDetailsContainer {
@@ -266,7 +287,21 @@ button:focus-visible {
 }
 
 .movieDetailsOverview {
-  width: 60%;
+  width: 45%;
+}
+
+.moveDetailsBullets {
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+  > p {
+    width: 50%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
 }
 
 .addToWatchlistButton {
@@ -313,7 +348,7 @@ button:focus-visible {
   bottom: 0;
   display: block;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 20px;
   margin-bottom: 0px;
 }
 

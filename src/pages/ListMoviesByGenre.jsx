@@ -68,8 +68,15 @@ export default function ListMoviesByGenre() {
                 />
                 <div className="searchResultsMovieInfo">
                   <h4>{mov.title}</h4>
-                  <p>{mov.release_date}</p>
-                  <p>{mov.vote_average}</p>
+                  <p>
+                    {" "}
+                    {mov.release_date
+                      ? mov.release_date.substring(0, 4)
+                      : "N/A"}
+                  </p>
+                  <p>
+                    {mov.vote_average ? mov.vote_average.toFixed(1) : "N/A"}
+                  </p>
                 </div>
               </Link>
             </div>

@@ -92,10 +92,25 @@ export default function MovieDetails() {
       />
       <h3 className="movieDetailsTitle">{movieDetails.title}</h3>
       <p className="movieDetailsTagline">{movieDetails.tagline}</p>
-      <p className="movieDetailsPopularity">{movieDetails.vote_average}</p>
-      <p className="movieDetailsReleaseDate">{movieDetails.release_date}</p>
-      <p className="movieDetailsOverview">{movieDetails.overview}</p>
+      <p className="movieDetailsPopularity">
+        Rating:{" "}
+        {movieDetails.vote_average
+          ? movieDetails.vote_average.toFixed(1)
+          : "N/A"}
+      </p>
 
+      <p className="movieDetailsOverview">{movieDetails.overview}</p>
+      <div className="moveDetailsBullets">
+        <p className="movieDetailsReleaseDate">
+          Release Year:{" "}
+          {movieDetails.release_date
+            ? movieDetails.release_date.substring(0, 4)
+            : "N/A"}
+        </p>
+        <p>Country of Origin: {movieDetails.origin_country}</p>
+        <p>Original Language: {movieDetails.original_language}</p>
+        <p>Runtime: {movieDetails.runtime} minutes</p>
+      </div>
       <div classname="watchlistButtons">
         <button
           className="removeFromWatchlistButton"

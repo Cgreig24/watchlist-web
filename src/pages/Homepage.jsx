@@ -6,15 +6,6 @@ import Search from "../components/Search";
 function Homepage() {
   const [films, setFilms] = useState([]);
 
-  {
-    /* 
-  useEffect(() => {
-    axios.get(apiURL).then((response) => {
-      setFilms(response.data);
-    });
-  }, []);
-*/
-  }
   return (
     <>
       <div>

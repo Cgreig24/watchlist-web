@@ -67,7 +67,7 @@ export default function Watchlist() {
                     className="searchResultsImage"
                     src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`}
                   />
-                  <p>{mov.title}</p>
+                  <h4 className="searchResultsMovieInfo">{mov.title}</h4>
                 </Link>
                 <button onClick={() => removeFromWatchlist(mov.id)}>
                   Remove
