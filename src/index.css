@@ -125,6 +125,10 @@ button:focus-visible {
   width: 100px;
 }
 
+.homepageIntro {
+  margin-bottom: 8px;
+}
+
 .searchbar {
   input,
   button {
@@ -132,8 +136,8 @@ button:focus-visible {
     outline: none;
     border: none;
     border-radius: 20px;
-    position: absolute;
-    bottom: 60%;
+    position: fixed;
+    bottom: 40%;
     transform: translate(-50%, -50%);
   }
 
@@ -327,16 +331,34 @@ button:focus-visible {
   margin: 8px 18px;
 }
 
-/*
-.watchlistButtons{}
+#progress-bar {
+  width: 50%;
+  margin: 10px;
 
+  color: #05e205;
+  color: #538000;
+  color: #4f8000;
+  color: #adc90b;
+  color: #d4b500;
+  color: #c98302;
+  color: #c26d0c;
+  color: #940505;
+  color: #2b0101;
+}
 
-
-.movieDetailsPopularity{}
-.movieDetailsReleaseDate{}
-
-
-*/
+#progress-val {
+  border-radius: 50px;
+  border: 1px solid #000;
+  background: none;
+  outline: none;
+  padding: 2px 5px 8px 5px;
+  height: 20px;
+  width: 100px;
+  text-align: center;
+}
+#steps {
+  background-image: linear-gradient(to right, #000, #ffff);
+}
 
 .footer {
   background-color: #371965;

@@ -3,6 +3,7 @@ const apiKey = import.meta.env.VITE_MOVIES_API_KEY;
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Progress from "../components/Progress";
 
 export default function ListMoviesByGenre() {
   const [discoverMovie, setDiscoverMovie] = useState([]);
@@ -10,6 +11,8 @@ export default function ListMoviesByGenre() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
+  const [progress, setProgress] = useState(0);
 
   const options = {
     method: "GET",
@@ -55,10 +58,24 @@ export default function ListMoviesByGenre() {
     listMovies();
   }, [currentPage]);
 
+  const getColorByRating = (rating) => {
+    if (rating >= 9) return "#05e205";
+    if (rating >= 8) return "#538000";
+    if (rating >= 7) return "#4f8000";
+    if (rating >= 6) return "#adc90b";
+    if (rating >= 5) return "#d4b500";
+    if (rating >= 4) return "#c98302";
+    if (rating >= 3) return "#c26d0c";
+    if (rating >= 2) return "#940505";
+    if (rating >= 1) return "#2b0101";
+  };
+
   return (
     <div className="searchResultsMovieContainer">
       <div className="searchResultsMovieCard">
         {discoverMovie.map((mov) => {
+          const voteAverage = mov.vote_average ? mov.vote_average * 10 : 0;
+          const color = getColorByRating(mov.vote_average);
           return (
             <div className="searchResultsMovie" key={mov.id}>
               <Link to={`/movies/` + mov.id}>
@@ -77,6 +94,13 @@ export default function ListMoviesByGenre() {
                   <p>
                     {mov.vote_average ? mov.vote_average.toFixed(1) : "N/A"}
                   </p>
+                  <div className="App">
+                    <Progress
+                      id="progress-bar"
+                      present={voteAverage}
+                      color={color}
+                    />
+                  </div>
                 </div>
               </Link>
             </div>
